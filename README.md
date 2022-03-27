@@ -1,6 +1,6 @@
 # lu2id-emacs
 
-My own fairly basic modifications, mostly for private use, to take notes in markdown and do basic coding in R.
+My own fairly basic modifications, mostly for private use, to take notes in markdown and do basic coding in R. Includes only ESS and markdown-mode, along with a couple of themes to choose from.
 
 ## Installation
 
