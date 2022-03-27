@@ -4,4 +4,23 @@ My own fairly basic modifications, mostly for private use, to take notes in mark
 
 ## Installation
 
-After installing vanilla emacs, back up the default ".emacs.d" directory and ".emacs" file. Move "emacs_hidden_dir" to your home directory and rename it to ".emacs.d". Move "emacs_hidden" to your home directory and rename it to ".emacs". After launching emacs, run M-x package-refresh-contents.
+After installing vanilla emacs, back up the default ".emacs.d" directory and ".emacs" file. 
+
+```
+sudo cp .emacs.d .emacs.d.bak
+sudo rm -r .emacs.d
+sudo cp .emacs .emacs.bak
+sudo rm .emacs
+```
+
+Move "emacs_hidden_dir" to your home directory and rename it to ".emacs.d". Next, move "emacs_hidden to your home directory and rename it to ".emacs".
+
+```
+cd lu2id-emacs/
+
+mv emacs_hidden_dir ~/.emacs.d
+
+mv emacs_hidden ~/.emacs
+
+```
+After launching emacs, run M-x package-refresh-contents.
