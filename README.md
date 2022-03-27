@@ -4,7 +4,7 @@ My own fairly basic modifications, mostly for private use, to take notes in mark
 
 ## Installation
 
-After installing vanilla emacs, back up the default ".emacs.d" directory and ".emacs" file. 
+After installing vanilla emacs, back up the default ".emacs.d" directory and ".emacs" file. Afterwards, you can delete the original ones.
 
 ```
 sudo cp .emacs.d .emacs.d.bak
@@ -17,9 +17,7 @@ Move "emacs_hidden_dir" to your home directory and rename it to ".emacs.d". Next
 
 ```
 cd lu2id-emacs/
-
 mv emacs_hidden_dir ~/.emacs.d
-
 mv emacs_hidden ~/.emacs
 
 ```
