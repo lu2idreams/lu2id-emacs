@@ -1,6 +1,6 @@
 # lu2id-emacs
 
-My own fairly basic modifications, mostly for private use.
+My own fairly basic modifications, mostly for private use, to take notes in markdown and do basic coding in R.
 
 ## Installation
 
