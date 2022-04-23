@@ -23,4 +23,4 @@ mv emacs_hidden_dir ~/.emacs.d
 mv emacs_hidden ~/.emacs
 
 ```
-After launching emacs, run M-x package-refresh-contents.
+After launching emacs, run M-x package-refresh-contents. On versions more recent than 27.2 (which is what I use), you may encounter the error "Failed to download 'gnu' archive", in which case you need to install the package gnu-elpa-keyring-update.
