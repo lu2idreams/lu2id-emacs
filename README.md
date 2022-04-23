@@ -1,6 +1,6 @@
 # lu2id-emacs
 
-My own fairly basic modifications, mostly for private use, to take notes in markdown and do basic coding in R. Includes only ESS and markdown-mode, along with a couple of themes to choose from.
+My own fairly basic modifications, mostly for private use, to take notes in markdown and do basic coding in R. Includes only ESS and markdown-mode, along with a couple of themes to choose from, and a customized dashboard to hail our lord and savior.
 
 ![lu2id-emacs](https://user-images.githubusercontent.com/87900554/164890601-40b69b93-c0fe-4ed7-8901-c1f772f81a5f.png)
 
