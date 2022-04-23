@@ -2,6 +2,8 @@
 
 My own fairly basic modifications, mostly for private use, to take notes in markdown and do basic coding in R. Includes only ESS and markdown-mode, along with a couple of themes to choose from.
 
+![lu2id-emacs](https://user-images.githubusercontent.com/87900554/164890601-40b69b93-c0fe-4ed7-8901-c1f772f81a5f.png)
+
 ## Installation
 
 After installing vanilla emacs, back up the default ".emacs.d" directory and ".emacs" file. Afterwards, you can delete the original ones.
