@@ -41,4 +41,5 @@
 (setq dashboard-set-footer nil)
 (setq dashboard-banner-logo-title "Welcome back to the one true editor.")
 
+(setq inhibit-startup-screen t) ;; inhibit the default startup screen
 
