@@ -33,6 +33,21 @@
 
 (when window-system (set-frame-size (selected-frame) 80 35))
 
+;; start writeroom-mode when editing markdown
+(add-hook 'markdown-mode-hook 'writeroom-mode)
+
+;; evil
+(require 'evil)
+(evil-mode 1)
+(setq evil-respect-visual-line-mode t)
+;; Make movement keys work like they should
+(define-key evil-normal-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
+(define-key evil-normal-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
+(define-key evil-motion-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
+(define-key evil-motion-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
+; Make horizontal movement cross lines                                    
+(setq-default evil-cross-lines t)
+
 (require 'dashboard)
 (dashboard-setup-startup-hook)
 (setq dashboard-startup-banner "~/.emacs.d/jesus2.png")
@@ -43,3 +58,17 @@
 
 (setq inhibit-startup-screen t) ;; inhibit the default startup screen
 
+;; Command for writing (i.e. saving) and closing current buffer only
+(evil-define-command evil-write-and-kill-buffer (path)
+  "Save and kill buffer."
+  :repeat nil
+  :move-point nil
+  (interactive "<f>")
+  (if (zerop (length path))
+      (save-buffer)
+    (write-file path))
+  (kill-buffer (current-buffer)))
+
+(evil-ex-define-cmd "wbd[elete]" 'evil-write-and-kill-buffer)
+;; ...so :wbd should behave like default Emacs' C-x s C-x k
+;; Think of :wbd as "Write Buffer - Delete"
