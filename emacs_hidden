@@ -1,0 +1,69 @@
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(toggle-scroll-bar -1)
+(global-display-line-numbers-mode t)
+(global-visual-line-mode t)
+(require 'package)
+(setq package-check-signature nil)
+;; Add any repositories here
+(add-to-list 'package-archives
+	     '("MELPA" .
+	       "https://melpa.org/packages/"))
+(package-initialize)
+
+(when window-system (set-frame-size (selected-frame) 80 35))
+
+;; start writeroom-mode when editing markdown
+(add-hook 'markdown-mode-hook 'writeroom-mode)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes '(modus-operandi))
+ '(custom-safe-themes
+   '("0dd2666921bd4c651c7f8a724b3416e95228a13fca1aa27dc0022f4e023bf197" "3199be8536de4a8300eaf9ce6d864a35aa802088c0925e944e2b74a574c68fd0" "7dc296b80df1b29bfc4062d1a66ee91efb462d6a7a934955e94e786394d80b71" default))
+ '(global-display-line-numbers-mode t)
+ '(menu-bar-mode nil)
+ '(package-selected-packages
+   '(evil modus-themes one-themes ess markdown-preview-mode spacemacs-theme markdown-mode gnu-elpa-keyring-update dashboard))
+ '(tool-bar-mode nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Noto Sans Mono" :foundry "GOOG" :slant normal :weight normal :height 143 :width normal)))))
+
+;; evil
+(require 'evil)
+(evil-mode 1)
+(setq evil-respect-visual-line-mode t)
+;; Make movement keys work like they should
+(define-key evil-normal-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
+(define-key evil-normal-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
+(define-key evil-motion-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
+(define-key evil-motion-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
+; Make horizontal movement cross lines                                    
+(setq-default evil-cross-lines t)
+
+;; Make a shortcut (:wbd) equivalent to M-x k:
+(evil-define-command evil-write-and-kill-buffer (path)
+  "Save and kill buffer."
+  :repeat nil
+  :move-point nil
+  (interactive "<f>")
+  (if (zerop (length path))
+      (save-buffer)
+    (write-file path))
+  (kill-buffer (current-buffer)))
+(evil-ex-define-cmd "wbd[elete]" 'evil-write-and-kill-buffer)
+;; ...so :wbd should behave like default Emacs' C-x s C-x k
+;; Think of :wbd as "Write Buffer - Delete"
+
+;; ESS mode bindings
+(require 'ess-mode)
+(define-key ess-mode-map (kbd "C-S-m") "%>%")
+(define-key inferior-ess-mode-map (kbd "C-S-m") "%>%")
+(define-key ess-mode-map (kbd "M--") #'ess-insert-assign)
+(define-key inferior-ess-mode-map (kbd "M--") #'ess-insert-assign)
